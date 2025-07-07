@@ -1,0 +1,900 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varish's 11th Birthday Party!</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Fredoka+One:wght@400&family=Quicksand:wght@300;400;600;700&display=swap');
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Quicksand', sans-serif;
+            background: linear-gradient(135deg, #ff6b6b 0%, #feca57 25%, #48dbfb 50%, #ff9ff3 75%, #a8e6cf 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 8s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+        
+        .container {
+            max-width: 400px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+            backdrop-filter: blur(15px);
+            border-radius: 25px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            position: relative;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+            padding: 30px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .photo-frame {
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 20px;
+            border-radius: 50%;
+            background: white;
+            padding: 5px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            animation: photoGlow 3s ease-in-out infinite alternate;
+        }
+        
+        .photo-content {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb);
+            color: white;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 600;
+            border-radius: 50%;
+            width: 100%;
+            height: 100%;
+            font-size: 0.75rem;
+            text-align: center;
+            line-height: 1.3;
+            padding: 10px;
+        }
+        
+        .birthday-boy {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+        
+        .age-badge {
+            background: white;
+            color: #ff6b6b;
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            font-weight: 700;
+            margin: 0 auto 20px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            animation: spin 3s linear infinite;
+        }
+        
+        .party-title {
+            font-size: 1.2rem;
+            color: white;
+            font-weight: 600;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
+        }
+        
+        .content {
+            padding: 30px 20px;
+            background: linear-gradient(135deg, rgba(255, 107, 107, 0.1) 0%, rgba(254, 202, 87, 0.1) 25%, rgba(72, 219, 251, 0.1) 50%, rgba(255, 159, 243, 0.1) 75%, rgba(168, 230, 207, 0.1) 100%);
+            background-size: 400% 400%;
+            animation: gradientShift 10s ease infinite;
+        }
+        
+        .detail-card {
+            background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 0%, rgba(255, 255, 255, 0.85) 100%);
+            backdrop-filter: blur(10px);
+            border-radius: 15px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+            border-left: 5px solid #ff6b6b;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .detail-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            border-left-color: #feca57;
+        }
+        
+        .detail-title {
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 5px;
+            font-size: 1.1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .detail-icon {
+            font-size: 1.5rem;
+            margin-right: 15px;
+            color: #ff6b6b;
+        }
+        
+        .detail-info {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.4;
+        }
+        
+        .countdown {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            animation: gradientShift 4s ease infinite;
+            color: white;
+            padding: 20px;
+            border-radius: 15px;
+            text-align: center;
+            margin: 20px 0;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
+        }
+        
+        .countdown-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+        
+        .countdown-timer {
+            font-size: 1.5rem;
+            font-weight: 700;
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .rsvp-section {
+            background: linear-gradient(135deg, #667eea, #764ba2, #ff6b6b, #feca57);
+            background-size: 400% 400%;
+            animation: gradientShift 6s ease infinite;
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            margin-top: 20px;
+        }
+        
+        .rsvp-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 15px;
+            font-family: 'Fredoka One', cursive;
+        }
+        
+        .rsvp-button {
+            background: white;
+            color: #667eea;
+            padding: 12px 30px;
+            border: none;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            margin: 10px;
+        }
+        
+        .rsvp-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+        
+        .location-link {
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+        
+        .location-link:hover {
+            transform: scale(1.1);
+        }
+        
+        .magic-text {
+            background: linear-gradient(45deg, #ff6b6b, #feca57, #48dbfb, #ff9ff3);
+            background-size: 400% 400%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: rainbow 3s ease infinite;
+        }
+        
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+            40% { transform: translateY(-10px); }
+            60% { transform: translateY(-5px); }
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        @keyframes photoGlow {
+            0% { box-shadow: 0 8px 25px rgba(255, 107, 107, 0.3); }
+            50% { box-shadow: 0 8px 25px rgba(254, 202, 87, 0.3); }
+            100% { box-shadow: 0 8px 25px rgba(72, 219, 251, 0.3); }
+        }
+        
+        .balloon-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 1000;
+            overflow: hidden;
+        }
+        
+        .balloon {
+            position: absolute;
+            width: 30px;
+            height: 40px;
+            border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+            cursor: pointer;
+            pointer-events: auto;
+            animation: float 3s ease-in-out infinite;
+            transition: transform 0.3s ease;
+        }
+        
+        .balloon:hover {
+            transform: scale(1.1);
+        }
+        
+        .balloon:nth-child(1) {
+            background: #ff6b6b;
+            top: 10%;
+            left: 10%;
+            animation-delay: 0s;
+        }
+        
+        .balloon:nth-child(2) {
+            background: #feca57;
+            top: 15%;
+            right: 15%;
+            animation-delay: 0.5s;
+        }
+        
+        .balloon:nth-child(3) {
+            background: #48dbfb;
+            top: 25%;
+            left: 20%;
+            animation-delay: 1s;
+        }
+        
+        .balloon:nth-child(4) {
+            background: #ff9ff3;
+            top: 20%;
+            right: 25%;
+            animation-delay: 1.5s;
+        }
+        
+        .balloon:nth-child(5) {
+            background: #a8e6cf;
+            top: 30%;
+            left: 50%;
+            animation-delay: 2s;
+        }
+        
+        .balloon:nth-child(6) {
+            background: #ffd93d;
+            top: 12%;
+            right: 40%;
+            animation-delay: 2.5s;
+        }
+        
+        .glitter {
+            position: absolute;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            pointer-events: none;
+            animation: glitterFall 2s ease-out forwards;
+        }
+        
+        .music-control {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            cursor: pointer;
+            font-size: 1.5rem;
+            color: white;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            z-index: 2000;
+            transition: transform 0.3s ease;
+            animation: musicPulse 2s ease-in-out infinite;
+        }
+        
+        .music-control:hover {
+            transform: scale(1.1);
+        }
+        
+        .music-control.playing {
+            animation: musicSpin 2s linear infinite;
+        }
+        
+        .music-prompt {
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background: linear-gradient(135deg, #ff6b6b, #feca57);
+            color: white;
+            padding: 30px;
+            border-radius: 20px;
+            text-align: center;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            z-index: 3000;
+            display: none;
+            animation: popupScale 0.5s ease;
+        }
+        
+        .music-prompt h3 {
+            font-family: 'Fredoka One', cursive;
+            font-size: 1.5rem;
+            margin-bottom: 15px;
+        }
+        
+        .music-prompt p {
+            margin-bottom: 20px;
+            font-size: 1rem;
+        }
+        
+        .music-prompt button {
+            background: white;
+            color: #ff6b6b;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin: 0 10px;
+            transition: transform 0.3s ease;
+        }
+        
+        .music-prompt button:hover {
+            transform: scale(1.05);
+        }
+        
+        .countdown-details {
+            font-size: 0.9rem;
+            margin-top: 8px;
+            opacity: 0.9;
+        }
+        
+        .countdown-unit {
+            display: inline-block;
+            margin: 0 8px;
+            text-align: center;
+            min-width: 45px;
+        }
+        
+        .countdown-number {
+            display: block;
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1;
+        }
+        
+        .countdown-label {
+            display: block;
+            font-size: 0.7rem;
+            opacity: 0.8;
+            margin-top: 2px;
+        }
+        
+        .next-year-popup {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 3000;
+            animation: fadeIn 0.5s ease;
+        }
+        
+        .popup-content {
+            background: linear-gradient(135deg, #ff6b6b, #feca57, #48dbfb);
+            color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 350px;
+            margin: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+            animation: popupScale 0.5s ease;
+        }
+        
+        .popup-title {
+            font-family: 'Fredoka One', cursive;
+            font-size: 2rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+        }
+        
+        .popup-message {
+            font-size: 1.1rem;
+            margin-bottom: 25px;
+            line-height: 1.4;
+        }
+        
+        .popup-close {
+            background: white;
+            color: #ff6b6b;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 25px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+        }
+        
+        .popup-close:hover {
+            transform: scale(1.05);
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(5deg); }
+        }
+        
+        @keyframes glitterFall {
+            0% { 
+                transform: translateY(0) rotate(0deg) scale(1);
+                opacity: 1;
+            }
+            100% { 
+                transform: translateY(200px) rotate(360deg) scale(0);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes rainbow {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="photo-frame">
+                <div class="photo-content">
+                    <div style="font-size: 1.8rem; margin-bottom: 8px;">🎂</div>
+                    <div style="font-size: 1rem; margin-bottom: 3px;">VARISH</div>
+                    <div style="font-size: 0.8rem; opacity: 0.9;">Birthday Boy</div>
+                    <div style="font-size: 0.6rem; margin-top: 5px; opacity: 0.7;">Age 11</div>
+                </div>
+            </div>
+            <div class="birthday-boy magic-text">VARISH</div>
+            <div class="age-badge">11</div>
+            <div class="party-title">is turning eleven!</div>
+        </div>
+        
+        <div class="content">
+            <div class="countdown">
+                <div class="countdown-title">Party Countdown</div>
+                <div class="countdown-timer" id="countdown">Loading...</div>
+                <div class="countdown-details" id="countdownDetails"></div>
+            </div>
+            
+            <div class="detail-card">
+                <div class="detail-title">
+                    <div>
+                        <span class="detail-icon">🎉</span>
+                        Birthday Celebration
+                    </div>
+                </div>
+                <div class="detail-info">
+                    Join us for Varish's special day!<br>
+                    Fun, games, and lots of surprises await!
+                </div>
+            </div>
+            
+            <div class="detail-card">
+                <div class="detail-title">
+                    <div>
+                        <span class="detail-icon">📅</span>
+                        When
+                    </div>
+                </div>
+                <div class="detail-info">
+                    Monday, July 14th, 2014<br>
+                    5:00 PM onwards
+                </div>
+            </div>
+            
+            <div class="detail-card">
+                <div class="detail-title">
+                    <div>
+                        <span class="detail-icon">📍</span>
+                        Where
+                    </div>
+                    <a href="https://maps.app.goo.gl/N3JgG9TV2HuWYFRDA" target="_blank" class="location-link">
+                        <img src="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjgiIGhlaWdodD0iMjgiIHZpZXdCb3g9IjAgMCA1MDAgNTAwIiBmaWxsPSJub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciPgo8IS0tIEJsdWUgbW91bnRhaW5zIC0tPgo8cGF0aCBkPSJNNTAgMzUwTDE1MCAyMDBMMjUwIDM1MEg1MFoiIGZpbGw9IiM0Q0FGNTAiLz4KPHN0eWxlPi5iZTEge2ZpbGw6IzRDQUY1MDt9LmJlMiB7ZmlsbDojOEJDMzRBO30uYmUzIHtmaWxsOiM0Qzc0OEI7fTwvc3R5bGU+CjwhLS0gR3JlZW4gbW91bnRhaW5zIC0tPgo8cGF0aCBkPSJNMTUwIDM1MEwyNTAgMjAwTDM1MCAzNTBIMTUwWiIgY2xhc3M9ImJlMSIvPgo8cGF0aCBkPSJNMjUwIDM1MEwzNTAgMjAwTDQ1MCAzNTBIMjUwWiIgY2xhc3M9ImJlMiIvPgo8IS0tIEJsdWUgbG9jYXRpb24gcGluIC0tPgo8Y2lyY2xlIGN4PSIyNTAiIGN5PSIxNTAiIHI9IjUwIiBjbGFzcz0iYmUzIi8+CjxjaXJjbGUgY3g9IjI1MCIgY3k9IjE1MCIgcj0iMjAiIGZpbGw9IndoaXRlIi8+CjwhLS0gTG9jYXRpb24gcGluIHBvaW50ZXIgLS0+CjxwYXRoIGQ9Ik0yNTAgMjAwTDI0MCAyMjBMMjYwIDIyMFoiIGNsYXNzPSJiZTMiLz4KPC9zdmc+" alt="Location" style="width: 28px; height: 28px;">
+                    </a>
+                </div>
+                <div class="detail-info">
+                    Nijam Officers' Institute (NOI)<br>
+                    IMA, Dehradun
+                </div>
+            </div>
+            
+            <div class="detail-card">
+                <div class="detail-title">
+                    <div>
+                        <span class="detail-icon">🎈</span>
+                        What to Expect
+                    </div>
+                </div>
+                <div class="detail-info">
+                    Games, cake, music, and lots of fun!<br>
+                    Come ready to celebrate!
+                </div>
+            </div>
+        </div>
+        
+        <div class="rsvp-section">
+            <div class="rsvp-title">Can You Make It?</div>
+            <a href="tel:8800255910" class="rsvp-button">📞 Call to RSVP</a>
+            <a href="sms:8800255910?body=Hi! I'd like to RSVP for Varish's birthday party on July 14th." class="rsvp-button">💬 Text RSVP</a>
+            <div style="margin-top: 15px; font-size: 0.9rem; opacity: 0.9;">
+                Contact: 8800255910
+            </div>
+        </div>
+    </div>
+    
+    <div class="balloon-container">
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+        <div class="balloon"></div>
+    </div>
+    
+    <div class="music-prompt" id="musicPrompt">
+        <h3>🎵 Tap anywhere to start the music! 🎵</h3>
+        <p>The complete Happy Birthday song will play automatically when you interact with the invite!</p>
+        <button onclick="startMusic()">🎶 Start Music Now!</button>
+        <button onclick="skipMusic()">🤫 No Thanks</button>
+    </div>
+    
+    <div class="next-year-popup" id="nextYearPopup">
+        <div class="popup-content">
+            <div class="popup-title">🎂 Oops!</div>
+            <div class="popup-message">
+                You just missed Varish's birthday party!<br><br>
+                <strong>Wait for 2026 for Next Blast!</strong><br><br>
+                But you can still enjoy this interactive invite! 🎈
+            </div>
+            <button class="popup-close" onclick="closePopup()">Got It! 🎉</button>
+        </div>
+    </div>
+    
+    <div class="surprise-message" id="surpriseMessage">
+        🎉 Surprise! Happy Birthday Varish! 🎉
+    </div>
+    
+    <button class="music-control" id="musicButton" title="Music Control">🎵</button>
+    
+    <audio id="backgroundMusic" loop preload="auto">
+        <source src="data:audio/mpeg;base64,SUQzBAAAAAAAI1RTU0UAAAAPAAADTGF2ZjU4Ljc2LjEwMAAAAAAAAAAAAAAA//tQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAWGluZwAAAA8AAAAIAAAJrABVVVVVVVVVVVVVVVVVVVVVVaqqqqqqqqqqqqqqqqqqqqqqqv///////////////////////////////////////////////////////////////////////////////////////////8AAAAATGF2YzU4LjEzAAAAAAAAAAAAAAAAJAQKAAAAAAAACawAOouSIQAAAAAA//tQxAADBwAAAGkAAAAIAAANGkAAAAIAAAGkAAABpAAAAaQAADSJAEaU...">
+        <!-- Happy Birthday melody as base64 -->
+    </audio>
+    
+    <script>
+        let musicPlaying = false;
+        let balloonsPoppedCount = 0;
+        let musicInitialized = false;
+        
+        // Dynamic Countdown Function
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            let partyDate = new Date(currentYear, 6, 14, 17, 0, 0); // July 14th, 5 PM
+            
+            if (now > partyDate) {
+                partyDate = new Date(currentYear + 1, 6, 14, 17, 0, 0);
+            }
+            
+            const timeDiff = partyDate.getTime() - now.getTime();
+            const countdownElement = document.getElementById('countdown');
+            const detailsElement = document.getElementById('countdownDetails');
+            
+            if (timeDiff > 0) {
+                const days = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+                const hours = Math.floor((timeDiff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+                const minutes = Math.floor((timeDiff % (1000 * 60 * 60)) / (1000 * 60));
+                const seconds = Math.floor((timeDiff % (1000 * 60)) / 1000);
+                
+                if (days > 0) {
+                    countdownElement.innerHTML = days + ' Days to Go! 🎉';
+                    detailsElement.innerHTML = 
+                        '<span class="countdown-unit"><span class="countdown-number">' + days + '</span><span class="countdown-label">Days</span></span>' +
+                        '<span class="countdown-unit"><span class="countdown-number">' + hours + '</span><span class="countdown-label">Hours</span></span>' +
+                        '<span class="countdown-unit"><span class="countdown-number">' + minutes + '</span><span class="countdown-label">Minutes</span></span>';
+                } else if (hours > 0) {
+                    countdownElement.innerHTML = 'Today is the Day! 🎂';
+                    detailsElement.innerHTML = 
+                        '<span class="countdown-unit"><span class="countdown-number">' + hours + '</span><span class="countdown-label">Hours</span></span>' +
+                        '<span class="countdown-unit"><span class="countdown-number">' + minutes + '</span><span class="countdown-label">Minutes</span></span>' +
+                        '<span class="countdown-unit"><span class="countdown-number">' + seconds + '</span><span class="countdown-label">Seconds</span></span>';
+                } else {
+                    countdownElement.innerHTML = '🎉 PARTY TIME! 🎉';
+                    detailsElement.innerHTML = 'The celebration has begun!';
+                }
+            } else {
+                const thisYearParty = new Date(currentYear, 6, 14, 17, 0, 0);
+                if (now > thisYearParty && now.getMonth() === 6 && now.getDate() > 14) {
+                    setTimeout(function() {
+                        document.getElementById('nextYearPopup').style.display = 'flex';
+                    }, 1000);
+                }
+                countdownElement.innerHTML = '🎂 Wait for 2026!';
+                detailsElement.innerHTML = 'Next party countdown will begin soon...';
+            }
+        }
+        
+        // Music Functions
+        function showMusicPrompt() {
+            if (!musicInitialized) {
+                document.getElementById('musicPrompt').style.display = 'block';
+            }
+        }
+        
+        function startMusic() {
+            musicInitialized = true;
+            document.getElementById('musicPrompt').style.display = 'none';
+            
+            // Create audio context for better browser support
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext) {
+                const audioContext = new AudioContext();
+                // Simple happy birthday tune using Web Audio API
+                playHappyBirthdayTune(audioContext);
+            }
+            
+            const musicButton = document.getElementById('musicButton');
+            musicButton.textContent = '🔇';
+            musicButton.classList.add('playing');
+            musicPlaying = true;
+        }
+        
+        function skipMusic() {
+            musicInitialized = true;
+            document.getElementById('musicPrompt').style.display = 'none';
+        }
+        
+        function playHappyBirthdayTune(audioContext) {
+            // Complete Happy Birthday melody with all verses
+            const notes = [
+                // "Happy Birthday to you" (1st line)
+                {freq: 261.63, duration: 0.4}, // C - Hap-
+                {freq: 261.63, duration: 0.2}, // C - py
+                {freq: 293.66, duration: 0.6}, // D - Birth-
+                {freq: 261.63, duration: 0.6}, // C - day
+                {freq: 349.23, duration: 0.6}, // F - to
+                {freq: 329.63, duration: 1.2}, // E - you
+                
+                // "Happy Birthday to you" (2nd line)
+                {freq: 261.63, duration: 0.4}, // C - Hap-
+                {freq: 261.63, duration: 0.2}, // C - py
+                {freq: 293.66, duration: 0.6}, // D - Birth-
+                {freq: 261.63, duration: 0.6}, // C - day
+                {freq: 392.00, duration: 0.6}, // G - to
+                {freq: 349.23, duration: 1.2}, // F - you
+                
+                // "Happy Birthday dear Varish" (3rd line)
+                {freq: 261.63, duration: 0.4}, // C - Hap-
+                {freq: 261.63, duration: 0.2}, // C - py
+                {freq: 523.25, duration: 0.6}, // C8 - Birth-
+                {freq: 440.00, duration: 0.6}, // A - day
+                {freq: 349.23, duration: 0.6}, // F - dear
+                {freq: 329.63, duration: 0.6}, // E - Va-
+                {freq: 293.66, duration: 1.2}, // D - rish
+                
+                // "Happy Birthday to you" (4th line)
+                {freq: 466.16, duration: 0.4}, // Bb - Hap-
+                {freq: 466.16, duration: 0.2}, // Bb - py
+                {freq: 440.00, duration: 0.6}, // A - Birth-
+                {freq: 349.23, duration: 0.6}, // F - day
+                {freq: 392.00, duration: 0.6}, // G - to
+                {freq: 349.23, duration: 1.5}, // F - you
+                
+                // Pause before repeat
+                {freq: 0, duration: 2.0}
+            ];
+            
+            let startTime = audioContext.currentTime;
+            notes.forEach((note, index) => {
+                if (note.freq > 0) { // Only play if frequency is not 0 (pause)
+                    const oscillator = audioContext.createOscillator();
+                    const gainNode = audioContext.createGain();
+                    
+                    oscillator.connect(gainNode);
+                    gainNode.connect(audioContext.destination);
+                    
+                    oscillator.frequency.setValueAtTime(note.freq, startTime);
+                    oscillator.type = 'sine';
+                    
+                    gainNode.gain.setValueAtTime(0, startTime);
+                    gainNode.gain.linearRampToValueAtTime(0.15, startTime + 0.05);
+                    gainNode.gain.linearRampToValueAtTime(0.1, startTime + note.duration - 0.05);
+                    gainNode.gain.linearRampToValueAtTime(0, startTime + note.duration);
+                    
+                    oscillator.start(startTime);
+                    oscillator.stop(startTime + note.duration);
+                }
+                
+                startTime += note.duration;
+            });
+            
+            // Repeat the complete song every 25 seconds
+            if (musicPlaying) {
+                setTimeout(() => {
+                    if (musicPlaying) playHappyBirthdayTune(audioContext);
+                }, 25000);
+            }
+        }
+        
+        function toggleMusic() {
+            if (!musicInitialized) {
+                showMusicPrompt();
+                return;
+            }
+            
+            const musicButton = document.getElementById('musicButton');
+            if (musicPlaying) {
+                musicPlaying = false;
+                musicButton.textContent = '🎵';
+                musicButton.classList.remove('playing');
+            } else {
+                startMusic();
+            }
+        }
+        
+        // Close popup function
+        function closePopup() {
+            document.getElementById('nextYearPopup').style.display = 'none';
+        }
+        
+        // Music control
+        document.getElementById('musicButton').addEventListener('click', toggleMusic);
+        
+        // Balloon popping with glitter
+        document.querySelectorAll('.balloon').forEach(function(balloon) {
+            balloon.addEventListener('click', function() {
+                this.style.transform = 'scale(0)';
+                this.style.transition = 'transform 0.3s ease';
+                
+                const rect = this.getBoundingClientRect();
+                const colors = ['#ffd700', '#ff6b6b', '#feca57', '#48dbfb', '#ff9ff3', '#a8e6cf'];
+                
+                for (let i = 0; i < 15; i++) {
+                    const glitter = document.createElement('div');
+                    glitter.className = 'glitter';
+                    glitter.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    glitter.style.left = (rect.left + Math.random() * 30) + 'px';
+                    glitter.style.top = (rect.top + Math.random() * 40) + 'px';
+                    glitter.style.animationDelay = Math.random() * 0.5 + 's';
+                    
+                    document.body.appendChild(glitter);
+                    
+                    setTimeout(function() {
+                        if (glitter.parentNode) {
+                            glitter.parentNode.removeChild(glitter);
+                        }
+                    }, 2000);
+                }
+                
+                balloonsPoppedCount++;
+                if (balloonsPoppedCount === 1) {
+                    const surpriseMessage = document.getElementById('surpriseMessage');
+                    surpriseMessage.style.display = 'block';
+                    setTimeout(function() {
+                        surpriseMessage.style.display = 'none';
+                    }, 3000);
+                }
+                
+                const balloonElement = this;
+                setTimeout(function() {
+                    if (balloonElement.parentNode) {
+                        balloonElement.parentNode.removeChild(balloonElement);
+                    }
+                }, 300);
+            });
+        });
+        
+        // Auto-start music on first user interaction
+        function enableAutoMusic() {
+            const AudioContext = window.AudioContext || window.webkitAudioContext;
+            if (AudioContext && !musicInitialized) {
+                try {
+                    const audioContext = new AudioContext();
+                    
+                    // Start music immediately on first interaction
+                    playHappyBirthdayTune(audioContext);
+                    
+                    const musicButton = document.getElementById('musicButton');
+                    musicButton.textContent = '🔇';
+                    musicButton.classList.add('playing');
+                    musicPlaying = true;
+                    musicInitialized = true;
+                    
+                    // Remove the event listener after first use
+                    document.removeEventListener('click', enableAutoMusic);
+                    document.removeEventListener('touchstart', enableAutoMusic);
+                    
+                } catch (error) {
+                    console.log('Audio context failed, showing prompt');
+                    showMusicPrompt();
+                }
+            }
+        }
+        
+        // Add event listeners for first user interaction
+        document.addEventListener('click', enableAutoMusic);
+        document.addEventListener('touchstart', enableAutoMusic);
+        
+        // Initialize countdown and music system
+        updateCountdown();
+        setInterval(updateCountdown, 1000);
+        
+        // Show music hint after 5 seconds if no interaction yet
+        setTimeout(() => {
+            if (!musicInitialized) {
+                showMusicPrompt();
+            }
+        }, 5000);
+    </script>
+</html>
